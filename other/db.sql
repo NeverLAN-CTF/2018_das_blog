@@ -46,5 +46,5 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `users` WRITE;
-INSERT INTO `users` VALUES (1,'JohnsTestUser','','AT3stAccountForT3sting');
+INSERT INTO `users` VALUES (1,'JohnsTestUser','user','AT3stAccountForT3sting');
 UNLOCK TABLES;

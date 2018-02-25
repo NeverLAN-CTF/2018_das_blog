@@ -31,7 +31,9 @@
 	<?php
 	    $POSTS = [];
 	    if(array_key_exists('permissions', $_COOKIE) && array_key_exists('user', $_COOKIE) ){
-            echo("<h3 class='welcome'>Welcome "+cleanData($_COOKIE['user'])+"</h3>");
+
+            echo("<h3 class='welcome'>Welcome ".cleanData($_COOKIE['user'])."</h3>");
+
             if(preg_match('/\badmin\b/i', $_COOKIE['permissions'])){
             
               echo("<h4 class='welcome'>You have ADMIN permissions</h4><hr>");
@@ -39,28 +41,28 @@
               $query = "SELECT * FROM `posts`;";
               $data = mysqli_query($conn, $query);
               while($result = mysqli_fetch_assoc($data)){
-                  $POSTS[] = "
+                  echo( "
                     <div class='post'>
                         <h3>".$result['title']."</h3>
                         <div style='post_body'>
                             ".$result['content']."
                         </div>
                     </div>
-                  ";
+                  ");
                 }
             }else{
                 echo("<h4 class='welcome'>You have DEFAULT permissions</h4><hr>");
                 $query = "SELECT * FROM `posts` WHERE `permissions`='OPEN';";
                 $data = mysqli_query($conn, $query);
                 while($result = mysqli_fetch_assoc($data)){
-                    $POSTS[] = "
+                    echo("
                         <div class='post'>
                             <h3>".$result['title']."</h3>
                             <div style='post_body'>
                             ".$result['content']."
                             </div>
                         </div>
-                    ";
+                    ");
                 }
             }
         }else{
