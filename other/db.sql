@@ -14,7 +14,8 @@ GRANT SELECT ON blog.* To 'blog'@'%' WITH GRANT OPTION;
 
 
 -- Add password for root user
-/*--ALTER USER 'root'@'localhost' IDENTIFIED BY '<password_root>';*/
+USE `mysql`;
+UPDATE user set password=PASSWORD('<password_root>') where User='root';
 
 -- Create blog database
 CREATE DATABASE `blog`;
@@ -40,7 +41,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `permissions` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
